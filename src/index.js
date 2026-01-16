@@ -1,6 +1,6 @@
-require('dotenv').config();
-const express = require('express');
-const { initBot } = require('./bot');
+import 'dotenv/config';
+import express from 'express';
+import { initBot } from './bot.js'; // IMPORTANTE: adicionar .js
 
 const app = express();
 const PORT = process.env.PORT || 3000;
