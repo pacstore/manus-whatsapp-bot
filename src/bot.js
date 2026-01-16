@@ -13,6 +13,7 @@ async function initBot() {
     }),
     puppeteer: {
       headless: true,
+      executablePath: '/usr/bin/chromium',
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
@@ -20,6 +21,7 @@ async function initBot() {
         '--disable-accelerated-2d-canvas',
         '--no-first-run',
         '--no-zygote',
+        '--single-process',
         '--disable-gpu'
       ]
     }
