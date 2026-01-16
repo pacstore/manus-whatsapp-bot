@@ -1,0 +1,81 @@
+{
+  "name": "manus-whatsapp-bot",
+  "version": "1.0.0",
+  "description": "WhatsApp AI Bot usando Groq (Llama 3.1 70B)",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": ["whatsapp", "bot", "ai", "groq", "llama"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "whatsapp-web.js": "^1.23.0",
+    "qrcode-terminal": "^0.12.0",
+    "express": "^4.18.2",
+    "groq-sdk": "^0.3.3",
+    "dotenv": "^16.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+```
+
+**Commit new file**
+
+---
+
+## 📄 ARQUIVO 3: .gitignore
+
+**Add file → Create new file**  
+Nome: `.gitignore`
+```
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# WhatsApp session
+.wwebjs_auth/
+.wwebjs_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+logs/
+*.log
+```
+
+**Commit new file**
+
+---
+
+## 📄 ARQUIVO 4: .env.example
+
+**Add file → Create new file**  
+Nome: `.env.example`
+```
+# Groq API Key (pegar em: https://console.groq.com)
+GROQ_API_KEY=gsk_sua_chave_aqui
+
+# Porta do servidor
+PORT=3000
