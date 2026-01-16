@@ -7,6 +7,25 @@ let client;
 async function initBot() {
   console.log('🤖 Inicializando Manus WhatsApp Bot...');
 
+  client = new Client({
+  authStrategy: new LocalAuth({
+    clientId: 'manus-bot'
+  }),
+  puppeteer: {
+    headless: true,
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-accelerated-2d-canvas',
+      '--no-first-run',
+      '--no-zygote',
+      '--single-process',
+      '--disable-gpu'
+    ]
+  }
+});
+
   // QR Code para conectar
   client.on('qr', (qr) => {
     console.log('\n📱 ESCANEIE O QR CODE ABAIXO COM SEU WHATSAPP:\n');
