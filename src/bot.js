@@ -1,6 +1,6 @@
-import { Client, LocalAuth } from 'whatsapp-web.js';
-import qrcode from 'qrcode-terminal';
-import { askGroq } from './groq.js'; // Adicionar .js
+const { Client, LocalAuth } = require('whatsapp-web.js');
+const qrcode = require('qrcode-terminal');
+const { askGroq } = require('./groq');
 
 let client;
 
@@ -92,4 +92,4 @@ async function initBot() {
   await client.initialize();
 }
 
-export { initBot };
+module.exports = { initBot };
