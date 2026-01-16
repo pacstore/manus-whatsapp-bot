@@ -1,4 +1,4 @@
-const Groq = require('groq-sdk');
+import Groq from 'groq-sdk';
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY
@@ -36,7 +36,6 @@ Importante:
     });
 
     return completion.choices[0]?.message?.content || 'Desculpe, não consegui processar sua mensagem.';
-
   } catch (error) {
     console.error('❌ Erro ao chamar Groq API:', error.message);
     
@@ -52,23 +51,4 @@ Importante:
   }
 }
 
-module.exports = { askGroq };
-```
-
-**Commit new file**
-
----
-
-## ✅ PRONTO! TODOS OS ARQUIVOS CRIADOS!
-
-Seu repositório agora tem:
-```
-manus-whatsapp-bot/
-├── README.md
-├── package.json
-├── .gitignore
-├── .env.example
-└── src/
-    ├── index.js
-    ├── bot.js
-    └── groq.js
+export { askGroq };
