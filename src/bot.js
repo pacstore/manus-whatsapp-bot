@@ -1,12 +1,12 @@
-const { Client, LocalAuth } = require('whatsapp-web.js');
-const qrcode = require('qrcode-terminal');
-const { askGroq } = require('./groq');
+import { Client, LocalAuth } from 'whatsapp-web.js';
+import qrcode from 'qrcode-terminal';
+import { askGroq } from './groq.js'; // Adicionar .js
 
 let client;
 
 async function initBot() {
   console.log('🤖 Inicializando Manus WhatsApp Bot...');
-
+  
   client = new Client({
     authStrategy: new LocalAuth({
       clientId: 'manus-bot'
@@ -70,7 +70,7 @@ async function initBot() {
       const userMessage = message.body.trim();
       const contact = await message.getContact();
       const contactName = contact.pushname || contact.number;
-
+      
       console.log(`\n💬 Mensagem de ${contactName}: "${userMessage}"`);
 
       // Mostrar "digitando..."
@@ -78,12 +78,10 @@ async function initBot() {
 
       // Perguntar pro Groq AI
       const response = await askGroq(userMessage);
-
       console.log(`🤖 Manus respondeu: "${response.substring(0, 50)}..."`);
 
       // Enviar resposta
       await message.reply(response);
-
     } catch (error) {
       console.error('❌ Erro ao processar mensagem:', error);
       await message.reply('Desculpe, ocorreu um erro. Tente novamente! 🤖');
@@ -94,4 +92,4 @@ async function initBot() {
   await client.initialize();
 }
 
-module.exports = { initBot };
+export { initBot };
