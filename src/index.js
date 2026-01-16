@@ -5,6 +5,7 @@ const { initBot } = require('./bot');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Healthcheck endpoint (Railway precisa disso)
 app.get('/', (req, res) => {
   res.json({ 
     status: 'online',
@@ -18,12 +19,16 @@ app.get('/health', (req, res) => {
   res.json({ status: 'healthy' });
 });
 
+// Iniciar servidor
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando na porta ${PORT}`);
   console.log(`⏰ Iniciado em: ${new Date().toLocaleString('pt-BR')}`);
+  
+  // Inicializar bot WhatsApp
   initBot();
 });
 
+// Tratamento de erros não capturados
 process.on('unhandledRejection', (reason, promise) => {
   console.error('❌ Unhandled Rejection:', reason);
 });
